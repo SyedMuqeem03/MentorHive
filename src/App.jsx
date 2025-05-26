@@ -20,8 +20,9 @@ const AIAssistantChat = lazy(() => import('./pages/AIAssistantChat'));
 const MentorsPage = lazy(() => import('./pages/MentorsPage'));
 const MyMentorsPage = lazy(() => import('./pages/MyMentorsPage'));
 
-// Component to handle redirects based on auth status
-function AuthRedirect() {
+// Updated component to handle redirects based on auth status
+// This component will show HomePage for non-authenticated users
+function HomePageWithAuth() {
   const { currentUser, loading } = useAuth();
   
   if (loading) {
@@ -30,19 +31,20 @@ function AuthRedirect() {
     </div>;
   }
   
-  if (!currentUser) {
-    return <Navigate to="/login" />;
+  // If user is authenticated, redirect based on role
+  if (currentUser) {
+    if (currentUser.role === 'student') {
+      return <Navigate to="/student-home" />;
+    } else if (currentUser.role === 'mentor') {
+      return <Navigate to="/mentor-home" />;
+    } else {
+      // If role is unknown, redirect to login
+      return <Navigate to="/login" />;
+    }
   }
   
-  // Redirect based on role
-  if (currentUser.role === 'student') {
-    return <Navigate to="/student-home" />;
-  } else if (currentUser.role === 'mentor') {
-    return <Navigate to="/mentor-home" />;
-  }
-  
-  // Fallback
-  return <Navigate to="/login" />;
+  // Show HomePage for non-authenticated users
+  return <HomePage />;
 }
 
 function App() {
@@ -54,7 +56,9 @@ function App() {
           <main className="min-h-screen">
             <Suspense fallback={<LoadingSpinner center text="Loading..." />}>
               <Routes>
-                <Route path="/" element={<AuthRedirect />} />
+                {/* Modified route to use the new component */}
+                <Route path="/" element={<HomePageWithAuth />} />
+                
                 <Route path="/login" element={<LoginPage />} />
                 <Route path="/signup" element={<SignupPage />} />
                 
