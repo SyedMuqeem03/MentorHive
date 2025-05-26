@@ -78,7 +78,7 @@ function HomePage() {
           </div>
         </div>
         
-        {/* Wave Divider - keep existing */}
+        {/* Wave Divider */}
         <div className="absolute bottom-0 left-0 w-full overflow-hidden">
           <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none" className="relative block w-full h-12 md:h-24">
             <path d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z" opacity=".25" className="fill-white"></path>
@@ -88,7 +88,7 @@ function HomePage() {
         </div>
       </section>
       
-      {/* Enhanced Features Section with Icons */}
+      {/* Features Section */}
       <section className="relative bg-white py-16 sm:py-24 lg:py-32">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center">
@@ -104,7 +104,7 @@ function HomePage() {
           </div>
           
           <div className="mt-16 grid gap-8 md:grid-cols-2 lg:grid-cols-4">
-            {/* Feature 1 - Enhanced with MUI Icon */}
+            {/* Feature 1 */}
             <div className="bg-white rounded-xl shadow-md hover:shadow-xl transition-all duration-300 border border-gray-100 overflow-hidden transform hover:scale-102 hover:-translate-y-1">
               <div className="p-6">
                 <div className="w-12 h-12 rounded-md bg-blue-100 flex items-center justify-center mb-4">
@@ -123,7 +123,7 @@ function HomePage() {
               </div>
             </div>
             
-            {/* Feature 2 - Enhanced with MUI Icon */}
+            {/* Feature 2 */}
             <div className="bg-white rounded-xl shadow-md hover:shadow-xl transition-all duration-300 border border-gray-100 overflow-hidden transform hover:scale-102 hover:-translate-y-1">
               <div className="p-6">
                 <div className="w-12 h-12 rounded-md bg-purple-100 flex items-center justify-center mb-4">
@@ -142,7 +142,7 @@ function HomePage() {
               </div>
             </div>
             
-            {/* Feature 3 - Enhanced with MUI Icon */}
+            {/* Feature 3 */}
             <div className="bg-white rounded-xl shadow-md hover:shadow-xl transition-all duration-300 border border-gray-100 overflow-hidden transform hover:scale-102 hover:-translate-y-1">
               <div className="p-6">
                 <div className="w-12 h-12 rounded-md bg-indigo-100 flex items-center justify-center mb-4">
@@ -161,7 +161,7 @@ function HomePage() {
               </div>
             </div>
             
-            {/* Feature 4 - Enhanced with MUI Icon */}
+            {/* Feature 4 */}
             <div className="bg-white rounded-xl shadow-md hover:shadow-xl transition-all duration-300 border border-gray-100 overflow-hidden transform hover:scale-102 hover:-translate-y-1">
               <div className="p-6">
                 <div className="w-12 h-12 rounded-md bg-green-100 flex items-center justify-center mb-4">
@@ -183,7 +183,7 @@ function HomePage() {
         </div>
       </section>
 
-      {/* Enhanced Testimonial Section */}
+      {/* Testimonials Section */}
       <section className="bg-gray-50 py-16 sm:py-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center">
@@ -198,7 +198,6 @@ function HomePage() {
             </p>
           </div>
           
-          {/* Keep existing testimonials but add star ratings */}
           <div className="mt-16 grid gap-8 md:grid-cols-3">
             {/* Testimonial 1 */}
             <div className="bg-white rounded-xl shadow-md hover:shadow-lg p-8 relative border border-gray-100">
@@ -280,7 +279,6 @@ function HomePage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="bg-gradient-to-r from-blue-700 to-indigo-800 rounded-2xl shadow-xl overflow-hidden border border-blue-500/30">
             <div className="px-8 py-10 relative">
-              {/* Add subtle pattern overlay */}
               <div className="absolute inset-0 opacity-10" 
                    style={{backgroundImage: "url('data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 20 20' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23ffffff' fill-opacity='1' fill-rule='evenodd'%3E%3Ccircle cx='3' cy='3' r='3'/%3E%3Ccircle cx='13' cy='13' r='3'/%3E%3C/g%3E%3C/svg%3E')"}}></div>
               
@@ -312,33 +310,6 @@ function HomePage() {
           </div>
         </div>
       </section>
-      
-      {/* Add this CSS to your global styles or as a style tag */}
-      <style jsx>{`
-        @keyframes blob {
-          0% {
-            transform: translate(0px, 0px) scale(1);
-          }
-          33% {
-            transform: translate(30px, -50px) scale(1.1);
-          }
-          66% {
-            transform: translate(-20px, 20px) scale(0.9);
-          }
-          100% {
-            transform: translate(0px, 0px) scale(1);
-          }
-        }
-        .animate-blob {
-          animation: blob 7s infinite;
-        }
-        .animation-delay-2000 {
-          animation-delay: 2s;
-        }
-        .animation-delay-4000 {
-          animation-delay: 4s;
-        }
-      `}</style>
     </div>
   );
 }
