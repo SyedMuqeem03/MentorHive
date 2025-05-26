@@ -271,6 +271,7 @@ function AIAssistantChat() {
   const [currentStreamedMessage, setCurrentStreamedMessage] = useState('');
   const [recommendedResources, setRecommendedResources] = useState([]);
   const [resourceCategories, setResourceCategories] = useState([]);
+  const [isUsingDemoMode, setIsUsingDemoMode] = useState(false);
   
   const messagesEndRef = useRef(null);
   const chatContainerRef = useRef(null);
@@ -626,32 +627,38 @@ function AIAssistantChat() {
   
   // Check if API key is valid - more thorough check
   useEffect(() => {
-    const isValidKey = API_KEY && 
-                      typeof API_KEY === 'string' &&
-                      API_KEY.length > 10 &&
-                      API_KEY !== "MENTOR_AI" && 
-                      API_KEY !== "your-groq-api-key" &&
-                      API_KEY !== "demo-mode";
+    const checkApiKey = () => {
+      // Check if API key is valid - more thorough check
+      const isValidKey = API_KEY && 
+                        typeof API_KEY === 'string' &&
+                        API_KEY.length > 10 &&
+                        API_KEY !== "MENTOR_AI" && 
+                        API_KEY !== "your-groq-api-key" &&
+                        API_KEY !== "demo-mode";
+      
+      setIsUsingDemoMode(!isValidKey);
+      
+      if (!isValidKey) {
+        console.warn("No valid API key provided, using demo mode");
+        setError("AI Assistant is running in demo mode with sample responses.");
+        return;
+      }
+      
+      // Initialize Groq client
+      try {
+        const client = new Groq({ 
+          apiKey: API_KEY, 
+          dangerouslyAllowBrowser: true 
+        });
+      } catch (err) {
+        console.error("Failed to initialize API client:", err);
+        setError("Could not initialize AI Assistant. Please try again later.");
+      }
+    };
     
-    setIsUsingDemoMode(!isValidKey);
-    
-    if (!isValidKey) {
-      console.warn("No valid API key provided, using demo mode");
-      setError("AI Assistant is running in demo mode with sample responses.");
-      return;
-    }
-    
-    // Initialize Groq client
-    try {
-      const client = new Groq({ 
-        apiKey: API_KEY, 
-        dangerouslyAllowBrowser: true 
-      });
-    } catch (err) {
-      console.error("Failed to initialize API client:", err);
-      setError("Could not initialize AI Assistant. Please try again later.");
-    }
-  }, []);
+    // Make sure the component is mounted before running this code
+    checkApiKey();
+  }, []); // Keep the empty dependency array
   
   return (
     <ThemeProvider theme={theme}>
