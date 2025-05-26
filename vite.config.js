@@ -18,6 +18,11 @@ export default defineConfig({
       protocol: "ws",
       host: "localhost",
     },
+    historyApiFallback: true,
+  },
+  preview: {
+    port: 3000,
+    strictPort: true,
   },
 })
 

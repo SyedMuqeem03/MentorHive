@@ -1,9 +1,10 @@
 import express from 'express';
 import cors from 'cors';
 import { Groq } from 'groq-sdk';
+import path from 'path';
 
 const app = express();
-const PORT = 5000;
+const PORT = process.env.PORT || 5000;
 
 // Enable CORS and JSON parsing
 app.use(cors());
@@ -14,6 +15,9 @@ const groq = new Groq({
   apiKey: process.env.GROQ_API_KEY || "MENTOR_AI",
   dangerouslyAllowBrowser: true // Add this if you want to test direct browser access
 });
+
+// Serve static files from the dist directory
+app.use(express.static(path.join(__dirname, 'dist')));
 
 // Create the chat API endpoint
 app.post('/api/chat', async (req, res) => {
@@ -67,6 +71,19 @@ app.get('/api/health', (req, res) => {
   res.json({ status: 'ok', message: 'API server is running' });
 });
 
+// For all routes, send the index.html file
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, 'dist', 'index.html'));
+});
+
 app.listen(PORT, () => {
   console.log(`API server running on port ${PORT}`);
 });
+
+// filepath: c:\Users\Public\Personal\imp\AI\project\package.json
+{
+  "scripts": {
+    // Your existing scripts...
+    "start": "node server.js"
+  }
+}
