@@ -45,6 +45,16 @@ The overall goal is to create a personalized academic support system that blends
 - **AI Integration**: Groq API (Llama3)
 - **Deployment**: Render.com
 
+## 🌟 Live Demo
+
+<div align="center">
+  
+[![🚀 Try MentorHive Live](https://img.shields.io/badge/🚀_Try_MentorHive_Live-Click_Here-4F46E5?style=for-the-badge&labelColor=2563EB&color=7C3AED&logoColor=white)](https://aimentorhive.netlify.app/)
+
+**No installation required** • **Instant access** • **Full features available**
+
+</div>
+
 ## 📋 Prerequisites
 
 - Node.js (v14.0.0 or later)
