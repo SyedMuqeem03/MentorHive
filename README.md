@@ -1,8 +1,7 @@
 # MentorHive
 
 <div align="center">
-  <img src="public/logo.png" alt="MentorHive Logo" width="200" height="200">
-  <h3>Connecting Students with Mentors for Academic Excellence</h3>
+  <img src="public/logo.png" alt="MentorHive Logo" width="400" height="400">
 </div>
 
 ## 🚀 Overview
